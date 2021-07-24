@@ -15,5 +15,5 @@ app.use('/', require('./routes/Route'));
 
 const PORT = process.env.APP_PORT;
 app.listen(PORT, ()=>{
-    console.log(`Aplikasi berjalan di localhost:${PORT}`);
+    console.log(`Aplikasi berjalan di http://localhost:${PORT}`);
 });

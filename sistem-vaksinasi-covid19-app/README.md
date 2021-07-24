@@ -3,4 +3,4 @@
 - ```npm install```
 - ```npm start```
 
-Open browser visit ```localhost:8080```
+Open browser visit ```localhost:8000```

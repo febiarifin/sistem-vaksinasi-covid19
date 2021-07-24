@@ -9,7 +9,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/assets/css/bootstrap.css" />
-    <title>Sistem Vaksinasi Covid 19</title>
+    <title>SISCOVID-19</title>
   </head>
   <body>
     {{! Navbar  }}
@@ -37,11 +37,57 @@
         >Daftar vaksinasi</a>
       </div>
     </div>
-
+    {{!-- Data covid-19 --}}
+    <div class="jumbotron" style="background-color: white;">
+        <center>
+            <div class="container">
+                <h3>Data covid</h3>
+                <p>{{error}}</p>
+                <p>Negara : <b>{{data.name}}</b> | Positif : <b>{{data.positif}}</b> Sembuh : <b>{{data.sembuh}}</b> | Meninggal : <b>{{data.meninggal}}</b> | Dirawat : <b>{{data.dirawat}}</b></p>
+            </div>
+        </center>
+    </div>
+    {{!-- Table rumah sakit rujukan --}}
+    <div class="jumbotron">
+        <center>
+            <div class="container">
+                <h3>Rumah Sakit Rujukan</h3>
+                <table class="table" id="mytable">
+                <thead>
+                    <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Capital</th>
+                    <th scope="col">Region</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Provinsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{#each data}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{address}}</td>
+                            <td>{{region}}</td>
+                            <td>{{phone}}</td>
+                            <td>{{province}}</td>
+                        </tr>
+                {{/each}}
+                </tbody>
+                </table>
+            </div>
+        </center>
+    </div>
+    
+    <div style="background-color: black; margin:auto;padding:30px; color: white">
+        <center>
+            <p>PRG - Febi Arifin &copy 2021</p>
+        </center>
+    </div>
+    
   </body>
   <script src="/assets/js/jquery-3.3.1.js"></script>
   <script src="/assets/js/bootstrap.js"></script>
   <script>
-
+      
   </script>
 </html>

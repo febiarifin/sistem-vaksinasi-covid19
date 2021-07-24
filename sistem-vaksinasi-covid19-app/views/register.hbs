@@ -32,21 +32,28 @@
                 <div class="form-group">
                   <label for="">NIK</label>
                   <input
-                    type="email"
+                    type="text"
                     class="form-control"
                     name="nik"
-                    aria-describedby="emailHelp"
                     placeholder="Masukkan NIK"
                   />
                 </div>
                 <div class="form-group">
                   <label for="">Nama lengkap</label>
                   <input
-                    type="email"
+                    type="text"
                     class="form-control"
                     name="namalengkap"
-                    aria-describedby="emailHelp"
                     placeholder="Masukkan Nama Lengkap"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="username"
+                    placeholder="Masukkan Username"
                   />
                 </div>
                 <div class="form-group">
@@ -69,6 +76,7 @@
                   />
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Daftar</button>
+                <span>{{msg}}</span>
                 <center>
                     <a href="/login">Sudah punya akun ? Login.</a>
                 </center>
