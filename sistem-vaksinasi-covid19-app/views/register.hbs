@@ -1,0 +1,89 @@
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+    <title>Daftar</title>
+  </head>
+  <body>
+    {{! Navbar  }}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="/">SISCOVID-19</a>
+      </div>
+    </nav>
+    {{! Jumbotron }}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="card mt-5" style="background-color:#f0f0f0;">
+            <div class="card-header">
+                <h3>Pendaftaran vaksinasi</h3>
+            </div>
+            <div class="card-body">
+              <form method="post" action="/user/register">
+                <div class="form-group">
+                  <label for="">NIK</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="nik"
+                    aria-describedby="emailHelp"
+                    placeholder="Masukkan NIK"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="">Nama lengkap</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="namalengkap"
+                    aria-describedby="emailHelp"
+                    placeholder="Masukkan Nama Lengkap"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="">E-mail</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    aria-describedby="emailHelp"
+                    placeholder="Masukkan email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Masukkan Password"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Daftar</button>
+                <center>
+                    <a href="/login">Sudah punya akun ? Login.</a>
+                </center>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+
+  </body>
+  <script src="/assets/js/jquery-3.3.1.js"></script>
+  <script src="/assets/js/bootstrap.js"></script>
+  <script>
+
+  </script>
+</html>

@@ -23,6 +23,7 @@ conn.connect((err) =>{
 // User Registrasi
 app.post('/user/register' , (req , res)=>{
     let data = {
+        nik : req.body.nik,
         username: req.body.username,
         namalengkap: req.body.namalengkap, 
         email: req.body.email, 
@@ -41,12 +42,16 @@ app.post('/user/register' , (req , res)=>{
 
 // User Login
 app.post('/user/login' , (req , res)=>{
-    let sql = "SELECT * FROM user WHERE username='"+req.body.username+"' AND password="+req.body.password;
+    let sql = "SELECT * FROM user WHERE nik='"+req.body.nik+"' AND password="+req.body.password;
     let query = conn.query(sql, (err, results) => {
         if(err) {
             res.json({'error' : true, 'msg' : 'Gagal Login'});
         }else{
-            res.json({'error' : false, 'msg' : 'Berhasil Login'});
+            if (results == '') {
+                res.json({'error' : true, 'msg' : 'Username dan Password salah'});
+            }else{
+                res.json({'error' : false, 'msg' : 'Berhasil login'});
+            }
         }
     });
 });
@@ -64,18 +69,25 @@ app.post('/vaksinasi/add' , (req , res)=>{
     var id = Math.random().toString(36).substr(2, 20);
     let data = {
         id: id,
-        username: req.body.username, 
+        nik: req.body.nik, 
         rumahsakit: req.body.rumahsakit
     };
-    let sql = "INSERT INTO vaksinasi SET ?";
-    let query = conn.query(sql, data,(err, results) => {
-        if(err) {
-            res.json({'error' : true, 'msg' : 'Gagal terinput'});
-        }else{
-            res.json({'error' : false, 'msg' : 'Berhasil terinput'});
-            // Update status vaksinasi
-            let sqlUpdate = "UPDATE user SET status= 'Sudah vaksinasi' WHERE username='"+req.body.username+"'" ;
-            let queryUpdate = conn.query(sqlUpdate);
+    let cekNik = "SELECT * FROM user WHERE nik='"+req.body.nik+"'";
+    let queryCekNik = conn.query(cekNik, (err, results) =>{
+        if (results == '') {
+            res.json({'error' : true, 'msg' : 'Nik tidak ditemukan'});
+        } else {
+            let sql = "INSERT INTO vaksinasi SET ?";
+            let query = conn.query(sql, data,(err, results) => {
+                if(err) {
+                    res.json({'error' : true, 'msg' : 'Gagal terinput'});
+                }else{
+                    res.json({'error' : false, 'msg' : 'Berhasil terinput'});
+                    // Update status vaksinasi
+                    let sqlUpdate = "UPDATE user SET status= 'Sudah vaksinasi' WHERE nik='"+req.body.nik+"'" ;
+                    let queryUpdate = conn.query(sqlUpdate);
+                }
+            });
         }
     });
 });
