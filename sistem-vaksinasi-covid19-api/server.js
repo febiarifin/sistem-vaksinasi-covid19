@@ -24,7 +24,7 @@ conn.connect((err) =>{
 app.post('/user/register' , (req , res)=>{
     let data = {
         username: req.body.username,
-        nama_lengkap: req.body.nama_lengkap, 
+        namalengkap: req.body.namalengkap, 
         email: req.body.email, 
         password: req.body.password,
         status : 'Belum vaksinasi'
@@ -47,6 +47,35 @@ app.post('/user/login' , (req , res)=>{
             res.json({'error' : true, 'msg' : 'Gagal Login'});
         }else{
             res.json({'error' : false, 'msg' : 'Berhasil Login'});
+        }
+    });
+});
+
+// Get Data vaksinasi 
+app.get('/vaksinasi',(req, res) => {
+    let sql = "SELECT * FROM vaksinasi";
+    let query = conn.query(sql, (err, results) => {
+      res.json(results);
+    });
+  });
+
+//  Add Detail vaksinasi
+app.post('/vaksinasi/add' , (req , res)=>{
+    var id = Math.random().toString(36).substr(2, 20);
+    let data = {
+        id: id,
+        username: req.body.username, 
+        rumahsakit: req.body.rumahsakit
+    };
+    let sql = "INSERT INTO vaksinasi SET ?";
+    let query = conn.query(sql, data,(err, results) => {
+        if(err) {
+            res.json({'error' : true, 'msg' : 'Gagal terinput'});
+        }else{
+            res.json({'error' : false, 'msg' : 'Berhasil terinput'});
+            // Update status vaksinasi
+            let sqlUpdate = "UPDATE user SET status= 'Sudah vaksinasi' WHERE username='"+req.body.username+"'" ;
+            let queryUpdate = conn.query(sqlUpdate);
         }
     });
 });
